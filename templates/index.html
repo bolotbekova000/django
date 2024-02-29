@@ -1,0 +1,39 @@
+<style>
+    a {text-decoration: none;}
+    ul {list-style-type: none;}
+    .menu li {display: inline-flex;padding-left: 20px;}
+    .menu a {font-size: 20px;color: black;}
+    .Docc-menu {text-align: center;}
+    .blockGor {display: inline-flex;}
+    .blockGor .content {padding-left: 20px;}
+</style>
+<div class="Docc-menu">
+    <ul class="menu">
+        <li><a href="{% url 'homepage' %}">главаная</a></li>
+        <li><a href="{% url 'about' %}">о нас</a></li>
+        <li><a href="">меню</a></li>
+        <li><a href="">контакты</a></li>
+    </ul>
+</div>
+<div class="blockGor">
+    {% for n in news %}
+    <div class="content">
+        <h4>{{n.title}}</h4>
+        {% if n.image %}
+        <img src="{{n.image.url}}" alt="200px">
+        {% endif %}
+        <p>{{n.desc|truncatewords:3}}</p>
+    </div>
+    {% endfor %}
+</div>
+{% for n in news %} 
+ 
+<h2>{{n.title}}</h2> 
+ 
+{% if n.image %} 
+<img src="{{n.image.url}}" width="200px" alt="">
+{% endif %} 
+ 
+<h3>{{n.desc}}</h3> 
+ 
+{% endfor %}
